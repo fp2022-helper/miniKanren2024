@@ -1,0 +1,24 @@
+(env
+ (_
+  (flags
+   (:standard -w -9-27 -warn-error -26-32))))
+
+(executable
+ (name noCanren)
+ (public_name noCanren)
+ (package noCanren)
+ (libraries compiler-libs.common ppxlib findlib)
+ (modules
+  Util
+  Put_distrib
+  Translator
+  Translator_unnesting
+  Printer_in_spec
+  Untype_more
+  Synonyms_synthesis
+  Beta_reductor
+  Normalizer
+  Call_by_need
+  noCanren)
+ (preprocess
+  (pps ppxlib.metaquot ppx_optcomp)))

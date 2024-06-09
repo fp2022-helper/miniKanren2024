@@ -1,0 +1,36 @@
+(cram
+ (deps src/test/kotlin/utils/OlegNumbers.kt))
+
+(rule
+ (targets klogic.jar)
+ (deps
+  ./gradlew
+  ./gradle/wrapper/gradle-wrapper.jar
+  ./gradle/wrapper/gradle-wrapper.properties
+  ./dune
+  ./build.gradle.kts
+  ./settings.gradle.kts
+  ./src/main/kotlin/org/jgs/classtable/ClassesExtractorTask.kt
+  ./src/test/kotlin/org/jgs/classtable/ClassesTableVisitor.kt
+  ./src/test/kotlin/utils/Closure.kt
+  ./src/test/kotlin/utils/JGS_Helpers.kt
+  ./src/test/kotlin/utils/JGS.kt
+  ./src/test/kotlin/utils/JGSTypes.kt
+  ./src/test/kotlin/utils/LogicInt.kt
+  ./src/test/kotlin/utils/OlegNumbers.kt
+  ./src/test/kotlin/utils/Option.kt
+  ./src/test/kotlin/utils/Utils.kt
+  ./src/test/kotlin/AppendoTest.kt
+  ./src/test/kotlin/JGSForward.kt
+  ./src/test/kotlin/JGSBackward.kt
+  ./src/test/kotlin/JGSstandard.kt
+  ./src/test/kotlin/OlegNumbersTest.kt
+  ./src/test/kotlin/TestRunner.kt
+  ;
+  )
+ ; dune doesn't allow to build files out of current directory, so we need extra copying
+ (action
+  (run sh -c "sh ./gradlew shadowJar && cp build/libs/klogic.jar . ")))
+
+(cram
+ (deps klogic.jar))

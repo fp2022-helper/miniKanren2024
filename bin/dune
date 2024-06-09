@@ -1,0 +1,22 @@
+(env
+ (dev
+  (flags
+   (:standard -w -9 -warn-error -39))))
+
+(executable
+ (name klogic_of_ocanren)
+ (modules klogic_of_ocanren)
+ (public_name kotlin_of_ocanren)
+ (flags
+  (:standard -rectypes))
+ (libraries klogic_of_ocanren_lib))
+
+(library
+ (name klogic_of_ocanren_lib)
+ (modules Trans_config AST Pp_scheme Pp_kotlin lib)
+ (flags
+  (:standard -rectypes))
+ (libraries str Tast_pattern ppxlib.stdppx compiler-libs.common ppx_deriving)
+ (inline_tests)
+ (preprocess
+  (pps ppx_expect ppx_deriving.map ppx_deriving.show)))

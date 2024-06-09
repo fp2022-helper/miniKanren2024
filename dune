@@ -1,0 +1,27 @@
+(env
+ (dev
+  (flags
+   (:standard -warn-error -9-26-27-32-33-69))))
+
+(library
+ (name oleg_numbers)
+ (modules oleg_numbers)
+ (libraries OCanren)
+ (wrapped false)
+ (flags
+  (:standard
+   -rectypes
+   ;-dsource
+   ))
+ (preprocess
+  (pps OCanren-ppx.ppx_fresh GT.ppx_all)))
+
+(library
+ (name test_numbers)
+ (modules test_numbers)
+ (libraries oleg_numbers)
+ (flags
+  (:standard -rectypes))
+ (inline_tests)
+ (preprocess
+  (pps OCanren-ppx.ppx_fresh ppx_expect ppx_inline_test)))

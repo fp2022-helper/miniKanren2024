@@ -1,0 +1,302 @@
+(env
+ (_
+  (flags
+   (:standard -rectypes))))
+
+(executables
+ (names test001 test002repr)
+ (modules test001 test002repr)
+ (package OCanren)
+ (public_names - -)
+ (flags
+  (:standard
+   ;-dsource
+   ;
+   ))
+ (preprocess
+  (pps
+   OCanren-ppx.ppx_repr
+   OCanren-ppx.ppx_fresh
+   OCanren-ppx.ppx_distrib
+   OCanren-ppx.ppx_deriving_reify
+   GT.ppx_all
+   --
+   -pretty))
+ (libraries OCanren OCanren.tester))
+
+(executables
+ (names test003sort test004)
+ (modules test003sort test004)
+ (package OCanren)
+ (public_names - -)
+ (preprocess
+  (pps
+   OCanren-ppx.ppx_repr
+   OCanren-ppx.ppx_fresh
+   OCanren-ppx.ppx_distrib
+   GT.ppx_all))
+ (libraries OCanren OCanren.tester))
+
+(executables
+ (names test005)
+ (modules test005)
+ (package OCanren)
+ (public_names -)
+ (flags
+  (:standard
+   ;-dsource
+   ;
+   ))
+ (preprocess
+  (pps OCanren-ppx.ppx_deriving_reify OCanren-ppx.ppx_distrib -- -pretty))
+ (libraries OCanren OCanren.tester))
+
+(executables
+ (names test006)
+ (package OCanren)
+ (public_names -)
+ (modules test006)
+ (flags
+  (:standard
+   ;-dsource
+   ;
+   ))
+ (preprocess
+  (pps
+   OCanren-ppx.ppx_distrib
+   GT.ppx_all
+   --
+   -pretty
+   ;
+   ))
+ (libraries OCanren OCanren.tester))
+
+(executables
+ (names test007)
+ (modules test007)
+ (package OCanren)
+ (public_names -)
+ (preprocess
+  (pps OCanren-ppx.ppx_distrib GT.ppx_all -- -pretty))
+ (libraries OCanren OCanren.tester))
+
+(executables
+ (names test009)
+ (modules test009)
+ (package OCanren)
+ (public_names -)
+ (flags
+  (:standard
+   ;-dsource
+   ;
+   ))
+ (preprocess
+  (pps OCanren-ppx.ppx_distrib GT.ppx_all -- -pretty))
+ (libraries OCanren OCanren.tester))
+
+(executables
+ (names test008 test010)
+ (package OCanren)
+ (public_names - -)
+ (modules test008 test010)
+ (flags
+  (:standard
+   ;-dsource
+   ;
+   ))
+ (preprocess
+  (pps OCanren-ppx.ppx_distrib GT.ppx_all -- -new-typenames -pretty))
+ (libraries OCanren OCanren.tester))
+
+(executables
+ (names test011)
+ (modules test011)
+ (package OCanren)
+ (public_names -)
+ (flags
+  (:standard
+   ;-dsource
+   ;
+   ))
+ (preprocess
+  (pps
+   OCanren-ppx.ppx_distrib
+   GT.ppx_all
+   --
+   -pretty
+   ;-new-typenames
+   ;
+   ))
+ (libraries OCanren OCanren.tester))
+
+(executables
+ (names test012mutual)
+ (modules test012mutual)
+ (package OCanren)
+ (public_names -)
+ (flags
+  (:standard
+   -dsource
+   ;
+   ))
+ (preprocess
+  (pps OCanren-ppx.ppx_distrib GT.ppx_all -- -new-typenames -pretty))
+ (libraries OCanren OCanren.tester))
+
+(executables
+ (names test013mutual)
+ (modules test013mutual)
+ (package OCanren)
+ (public_names -)
+ (flags
+  (:standard
+   ;-dsource
+   ;
+   ))
+ (preprocess
+  (pps OCanren-ppx.ppx_distrib GT.ppx_all -- -new-typenames -pretty))
+ (libraries OCanren OCanren.tester))
+
+(executables
+ (names test014mutual)
+ (modules test014mutual)
+ (package OCanren)
+ (public_names -)
+ (flags
+  (:standard
+   ;-dsource
+   ;
+   ))
+ (preprocess
+  (pps OCanren-ppx.ppx_distrib GT.ppx_all -- -new-typenames -pretty))
+ (libraries OCanren OCanren.tester))
+
+(cram
+ (package OCanren)
+ (applies_to test001)
+ (deps
+  (package OCanren-ppx)
+  %{project_root}/ppx/pp_ocanren_all.exe
+  %{project_root}/ppx/pp_distrib.exe
+  test001.ml
+  test001.exe))
+
+(cram
+ (package OCanren)
+ (applies_to test002)
+ (deps
+  (package OCanren-ppx)
+  %{project_root}/ppx/pp_ocanren_all.exe
+  test002repr.ml
+  test002repr.exe))
+
+(cram
+ (package OCanren)
+ (applies_to test003sort)
+ (deps
+  (package OCanren-ppx)
+  %{project_root}/ppx/pp_ocanren_all.exe
+  test003sort.ml
+  test003sort.exe))
+
+(cram
+ (package OCanren)
+ (applies_to test004)
+ (deps
+  (package OCanren-ppx)
+  test004.ml
+  test004.exe))
+
+(cram
+ (package OCanren)
+ (applies_to test005)
+ (deps
+  (package OCanren-ppx)
+  %{project_root}/ppx/pp_ocanren_all.exe
+  %{project_root}/ppx/pp_deriving_reify.exe
+  %{project_root}/ppx/pp_distrib.exe
+  test005.ml
+  test005.exe))
+
+(cram
+ (package OCanren)
+ (applies_to test006)
+ (deps
+  (package OCanren-ppx)
+  %{project_root}/ppx/pp_ocanren_all.exe
+  %{project_root}/ppx/pp_gt.exe
+  test006.ml
+  test006.exe))
+
+(cram
+ (package OCanren)
+ (applies_to test007)
+ (deps
+  (package OCanren-ppx)
+  %{project_root}/ppx/pp_ocanren_all.exe
+  %{project_root}/ppx/pp_gt.exe
+  test007.ml
+  test007.exe))
+
+(cram
+ (package OCanren)
+ (applies_to test008)
+ (deps
+  (package OCanren-ppx)
+  %{project_root}/ppx/pp_ocanren_all.exe
+  test008.ml
+  test008.exe))
+
+(cram
+ (package OCanren)
+ (applies_to test009)
+ (deps
+  (package OCanren-ppx)
+  %{project_root}/ppx/pp_ocanren_all.exe
+  test009.ml
+  test009.exe))
+
+(cram
+ (package OCanren)
+ (applies_to test010)
+ (deps
+  (package OCanren-ppx)
+  %{project_root}/ppx/pp_ocanren_all.exe
+  test010.ml
+  test010.exe))
+
+(cram
+ (package OCanren)
+ (applies_to test011)
+ (deps
+  (package OCanren-ppx)
+  %{project_root}/ppx/pp_ocanren_all.exe
+  test011.ml
+  test011.exe))
+
+(cram
+ (package OCanren)
+ (applies_to test012)
+ (deps
+  (package OCanren-ppx)
+  %{project_root}/ppx/pp_ocanren_all.exe
+  test012mutual.ml
+  test012mutual.exe))
+
+(cram
+ (package OCanren)
+ (applies_to test013)
+ (deps
+  (package OCanren-ppx)
+  %{project_root}/ppx/pp_ocanren_all.exe
+  test013mutual.ml
+  test013mutual.exe))
+
+(cram
+ (package OCanren)
+ (applies_to test014)
+ (deps
+  (package OCanren-ppx)
+  %{project_root}/ppx/pp_ocanren_all.exe
+  test014mutual.ml
+  test014mutual.exe))
